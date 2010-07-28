@@ -11,8 +11,8 @@ module Grit
       @repo = repo
       @a_path = a_path
       @b_path = b_path
-      @a_blob = a_blob =~ /^0{40}$/ ? nil : Blob.create(repo, :id => a_blob)
-      @b_blob = b_blob =~ /^0{40}$/ ? nil : Blob.create(repo, :id => b_blob)
+      @a_blob = a_blob =~ /^0{40}$/ ? nil : Blob.create(repo, :id => a_blob, :name=> File.basename(a_path))
+      @b_blob = b_blob =~ /^0{40}$/ ? nil : Blob.create(repo, :id => b_blob, :name=> File.basename(b_path))
       @a_mode = a_mode
       @b_mode = b_mode
       @new_file = new_file || @a_blob.nil?
